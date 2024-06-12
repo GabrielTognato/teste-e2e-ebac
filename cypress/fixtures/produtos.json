@@ -1,0 +1,29 @@
+{
+    "produtos": [
+
+    {
+        "Nome": "Abominable Hoodie",
+        "Size": "M",
+        "Color": "Green"
+    },
+
+    {
+        "Nome": "Aether Gym Pant",
+        "Size": "33",
+        "Color": "Brown"
+    },
+
+    {
+        "Nome": "Apollo Running Short",
+        "Size": "36",
+        "Color": "Black"
+    },
+
+    {
+        "Nome": "Ariel Roll Sleeve Sweatshirt",
+        "Size": "XL",
+        "Color": "Green"
+    }
+   
+]
+}
