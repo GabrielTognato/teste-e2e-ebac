@@ -26,7 +26,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
 
           cy.get('.dropdown-toggle > .text-skin > .icon-basket').click()
-          cy.get('#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .checkout').click();
+          cy.clicarCheckout()
           cy.get('.order-total > td').should('contain', 'R$214,50')
         .then(()=> {
 
@@ -44,24 +44,9 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
                 email: faker.internet.email()
             };
 
-
-          cy.get('#billing_first_name').type(informacoesCadastro.firstName)
-          cy.get('#billing_last_name').type(informacoesCadastro.lastName)
-          cy.get('#billing_company').type(informacoesCadastro.company)
-          cy.get('#select2-billing_country-container').click().type(`${informacoesCadastro.country}{enter}`)
-          cy.get('#billing_address_1').type(informacoesCadastro.address1, {force: true});
-          cy.get('#billing_address_2').type(informacoesCadastro.address2)
-          cy.get('#billing_city').type(informacoesCadastro.city)
-          cy.get('#select2-billing_state-container').click().type(`${informacoesCadastro.state}{enter}`)
-          cy.get('#billing_postcode').type('09190000')
-          cy.get('#billing_phone').type('11973238031')
-          cy.get('#billing_email').type(informacoesCadastro.email)
-          cy.get('#createaccount').click()
-          cy.get('#account_password').type('Ebacteste123',  {log: false})
-          cy.get('#terms').click()
-          cy.get('#place_order').click()
+          cy.preencherEndereço(informacoesCadastro)
           cy.wait(8000);
-          cy.get('.woocommerce-notice').should('exist')
+          cy.get('.woocommerce-notice').should('contain', 'pedido foi recebido.')
           });
         });
      });
